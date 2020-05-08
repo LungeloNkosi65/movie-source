@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CustomMovie</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="search-element.js"></script>
+</head>
+
+<body>
+  <input type="text" placeholder="Type something..." id="param">
+  <button type="button" onclick="getInputValue();">Search Movie</button>
+  <!-- <button onclick="getInputValue();">Search Movie</button> -->
+  <movie-search id="searchid"></movie-search>
+
+  <script>
+    const search = document.querySelector('movie-search');
+    search.addEventListener('serachresult', (event) => {
+      console.log(`"search reasults" emitted: ${event.detail}`)
+    });
+
+    function getInputValue() {
+      document.getElementById('searchid').searchparam = getTextBoxValue('param');
+    }
+
+    function getTextBoxValue(textBoxId) {
+      return document.getElementById(textBoxId).value;
+    }
+  </script>
+</body>
+
+</html>
